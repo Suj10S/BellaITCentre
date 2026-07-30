@@ -9,12 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
     <!-- GSAP & Three.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -435,7 +432,7 @@
             }
         }
 
-        /* ===== HERO SLIDESHOW ===== */
+        /* ===== HERO SLIDESHOW & ANIMATING FEATURES ===== */
         #hero {
             min-height: 100vh;
             display: flex;
@@ -456,20 +453,55 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.35) saturate(0.8);
+            transform: scale(1.08);
+            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out;
+            filter: brightness(0.45) saturate(1.1);
         }
         .hero-slideshow .slide.active {
             opacity: 1;
+            transform: scale(1);
         }
         .hero-slideshow .slide-gradient {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(15, 23, 42, 0.8) 100%);
             z-index: 1;
         }
+
+        /* Slideshow Navigation Dots */
+        .slideshow-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .slideshow-dot.active {
+            width: 32px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+        }
+
         #hero-canvas {
             position: absolute;
             inset: 0;
@@ -544,30 +576,64 @@
             position: relative;
             backdrop-filter: blur(2px);
         }
+
+        /* Floating Feature Preview Cards */
+        .feature-preview-card {
+            position: absolute;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            max-width: 240px;
+        }
+        .feature-preview-card img {
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1.5px solid var(--secondary);
+        }
+        .feature-preview-card .info-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .feature-preview-card .info-sub {
+            font-size: 0.7rem;
+            color: #94A3B8;
+        }
+
         .hero-3d-box .floating-icon {
             position: absolute;
             font-size: 2.8rem;
-            animation: float 3s ease-in-out infinite;
+            animation: float 3.5s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.3));
         }
         .hero-3d-box .floating-icon:nth-child(1) {
-            top: 10%;
-            left: 10%;
+            top: 5%;
+            left: 5%;
             animation-delay: 0s;
         }
         .hero-3d-box .floating-icon:nth-child(2) {
-            top: 20%;
-            right: 15%;
+            top: 10%;
+            right: 5%;
             animation-delay: 0.8s;
         }
         .hero-3d-box .floating-icon:nth-child(3) {
-            bottom: 25%;
-            left: 20%;
+            bottom: 10%;
+            left: 5%;
             animation-delay: 1.6s;
         }
         .hero-3d-box .floating-icon:nth-child(4) {
-            bottom: 15%;
-            right: 10%;
+            bottom: 5%;
+            right: 5%;
             animation-delay: 2.4s;
         }
         .hero-3d-box .floating-icon:nth-child(5) {
@@ -740,7 +806,7 @@
             color: var(--secondary);
         }
 
-        /* ===== PROCESS ===== */
+        /* ===== PROCESS & 20s MOTION ANIMATION ===== */
         .timeline {
             display: flex;
             flex-direction: column;
@@ -792,6 +858,192 @@
         .timeline-item p {
             color: #94A3B8;
             font-size: 0.85rem;
+        }
+
+        /* 20-Second Process Motion Box */
+        .process-motion-box {
+            position: relative;
+            width: 100%;
+            perspective: 1000px;
+        }
+        .motion-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.5s;
+        }
+        .motion-card:hover {
+            transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
+            border-color: rgba(37, 99, 235, 0.5);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(6, 182, 212, 0.3);
+        }
+        .motion-media-wrap {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #090D16;
+        }
+        .motion-img-20s {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: motionLoop20s 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            transform-origin: center center;
+        }
+        @keyframes motionLoop20s {
+            0% {
+                transform: scale(1) rotate(0deg) translateY(0px);
+                filter: brightness(1) contrast(1);
+            }
+            25% {
+                transform: scale(1.12) rotate(1.5deg) translateY(-12px);
+                filter: brightness(1.15) contrast(1.05);
+            }
+            50% {
+                transform: scale(1.22) rotate(-2deg) translateY(-6px);
+                filter: brightness(1.25) contrast(1.1);
+            }
+            75% {
+                transform: scale(1.08) rotate(1deg) translateY(-14px);
+                filter: brightness(1.1) contrast(1.02);
+            }
+            100% {
+                transform: scale(1) rotate(0deg) translateY(0px);
+                filter: brightness(1) contrast(1);
+            }
+        }
+        .motion-scanline {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.18) 50%, transparent 100%);
+            height: 40%;
+            animation: scanWave 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes scanWave {
+            0% { top: -40%; }
+            100% { top: 100%; }
+        }
+        .motion-overlay {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 5;
+        }
+        .motion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 40px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 0.08em;
+        }
+        .live-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22C55E;
+            box-shadow: 0 0 10px #22C55E;
+            animation: blinkPulse 1.2s infinite;
+        }
+        @keyframes blinkPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+        .motion-controls {
+            margin-top: 14px;
+        }
+        .motion-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #94A3B8;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-20s {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            animation: progress20s 20s linear infinite;
+            border-radius: 10px;
+        }
+        @keyframes progress20s {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== APP DEVELOPMENT ANIMATING VIDEO BACKGROUND ===== */
+        .service-card.app-dev-motion-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15);
+            transition: var(--transition);
+        }
+        .service-card.app-dev-motion-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--secondary);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.35);
+        }
+        .app-dev-bg-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .app-dev-bg-motion {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.38;
+            animation: motionLoop20s 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            filter: brightness(0.85) contrast(1.1);
+        }
+        .app-dev-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 100%);
+        }
+        .app-dev-content {
+            position: relative;
+            z-index: 2;
+        }
+        .motion-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 4px 12px;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 0.05em;
         }
 
         /* ===== TESTIMONIALS ===== */
@@ -1506,14 +1758,23 @@
 
     <!-- ===== HERO ===== -->
     <section id="hero">
-        <!-- Fullscreen Slideshow -->
+        <!-- Fullscreen Slideshow featuring all 3 user-provided images -->
         <div class="hero-slideshow" id="heroSlideshow">
-            <div class="slide active" style="background-image: url('https://i.insider.com/601441dd6dfbe10018e00c25?width=700'); background-size: cover; background-position: center;"></div>
-            <div class="slide" style="background-image: url('https://share.google/f1udS7qMBmwD0ribF'); background-size: cover; background-position: center;"></div>
-            <div class="slide" style="background-image: url('https://share.google/vW3jnYfYlNWtesBIF'); background-size: cover; background-position: center;"></div>
-            <div class="slide" style="background-image: url('https://share.google/bRpL26wtayOgBiuar'); background-size: cover; background-position: center;"></div>
-            <div class="slide" style="background-image: url('https://share.google/VVMANU75dvTI79bQh'); background-size: cover; background-position: center;"></div>
+            <!-- Image 1: Connected Dots & Lines Cybersecurity / Big Data Chaos -->
+            <div class="slide active" style="background-image: url('https://thumbs.dreamstime.com/b/connected-dots-lines-graphic-big-data-abstract-concept-coding-background-cybersecurity-connections-digital-chaos-152104461.jpg');"></div>
+            <!-- Image 2: Coding & Graphic Design Workspace / The Coder School -->
+            <div class="slide" style="background-image: url('https://www.thecoderschool.com/blog/wp-content/uploads/2019/02/iStock-869356340.jpg');"></div>
+            <!-- Image 3: Creative Coding & Future Text Programming 3D Backdrop -->
+            <div class="slide" style="background-image: url('https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg');"></div>
+            
             <div class="slide-gradient"></div>
+        </div>
+
+        <!-- Slideshow Indicators -->
+        <div class="slideshow-dots" id="slideshowDots">
+            <button class="slideshow-dot active" aria-label="Slide 1"></button>
+            <button class="slideshow-dot" aria-label="Slide 2"></button>
+            <button class="slideshow-dot" aria-label="Slide 3"></button>
         </div>
 
         <div id="hero-canvas"></div>
@@ -1523,8 +1784,8 @@
                 <div class="section-badge" data-lang="ne">🚀 नयाँ पुस्ताको आईटी समाधान</div>
                 <h1 data-lang="en">Transforming Ideas Into<br><span class="highlight">Digital Excellence</span></h1>
                 <h1 data-lang="ne">विचारलाई रूपान्तरण गर्दै<br><span class="highlight">डिजिटल उत्कृष्टता</span></h1>
-                <p data-lang="en">We build high-performance web & mobile applications with cutting-edge AI, cloud, and security solutions tailored to scale your business.</p>
-                <p data-lang="ne">हामी उच्च-प्रदर्शन वेब र मोबाइल एपहरू निर्माण गर्छौं, जसमा अत्याधुनिक AI, क्लाउड, र सुरक्षा समाधानहरू समावेश छन्, जसले तपाईंको व्यवसायलाई स्केल गर्न मद्दत गर्दछ।</p>
+                <p data-lang="en">We build high-performance software & mobile applications with cutting-edge AI and cloud solutions tailored to scale your business.</p>
+                <p data-lang="ne">हामी उच्च-प्रदर्शन सफ्टवेयर र मोबाइल एपहरू निर्माण गर्छौं, जसमा अत्याधुनिक AI र क्लाउड समाधानहरू समावेश छन्, जसले तपाईंको व्यवसायलाई स्केल गर्न मद्दत गर्दछ।</p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn-primary" data-lang="en">Start Your Project →</a>
                     <a href="#contact" class="btn-primary" data-lang="ne">तपाईंको परियोजना सुरु गर्नुहोस् →</a>
@@ -1540,6 +1801,23 @@
                     <span class="floating-icon">☁️</span>
                     <span class="floating-icon">🤖</span>
                     <span class="floating-icon">🔷</span>
+
+                    <!-- Interactive Floating Feature Badges -->
+                    <div class="feature-preview-card" style="top:-20px; left:-30px;">
+                        <img src="https://thumbs.dreamstime.com/b/connected-dots-lines-graphic-big-data-abstract-concept-coding-background-cybersecurity-connections-digital-chaos-152104461.jpg" alt="Digital Networks" />
+                        <div>
+                            <div class="info-title">Digital Networks</div>
+                            <div class="info-sub">Cloud & Intelligence</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-preview-card" style="bottom:-30px; right:-20px;">
+                        <img src="https://www.thecoderschool.com/blog/wp-content/uploads/2019/02/iStock-869356340.jpg" alt="Software Architecture" />
+                        <div>
+                            <div class="info-title">App Engineering</div>
+                            <div class="info-sub">Clean Code & UI</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1580,12 +1858,22 @@
                     <p data-lang="en">High-performance websites & web apps with modern frameworks.</p>
                     <p data-lang="ne">आधुनिक फ्रेमवर्कहरूसहित उच्च-प्रदर्शन वेबसाइट र वेब एपहरू।</p>
                 </div>
-                <div class="service-card card-glass">
-                    <div class="icon">📱</div>
-                    <h3 data-lang="en">Mobile Apps</h3>
-                    <h3 data-lang="ne">मोबाइल एप्स</h3>
-                    <p data-lang="en">Native & cross-platform mobile experiences for iOS & Android.</p>
-                    <p data-lang="ne">iOS र Android को लागि नेटिभ र क्रस-प्लेटफर्म मोबाइल अनुभवहरू।</p>
+                <div class="service-card card-glass app-dev-motion-card">
+                    <div class="app-dev-bg-wrap">
+                        <img src="https://share.google/FStIUwiyCuSXl3RXS" onerror="this.src='https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg'" alt="App Development Motion Video" class="app-dev-bg-motion" />
+                        <div class="app-dev-overlay"></div>
+                    </div>
+                    <div class="app-dev-content">
+                        <div class="icon">📱</div>
+                        <h3 data-lang="en">App Development</h3>
+                        <h3 data-lang="ne">एप विकास</h3>
+                        <p data-lang="en">Native & cross-platform mobile experiences for iOS, Android & Web.</p>
+                        <p data-lang="ne">iOS, Android र वेबको लागि नेटिभ र क्रस-प्लेटफर्म एप अनुभवहरू।</p>
+                        <div class="motion-tag">
+                            <span class="live-pulse"></span>
+                            <span>20s Motion Video BG</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-card card-glass">
                     <div class="icon">🎨</div>
@@ -1660,33 +1948,42 @@
             </div>
             <div class="grid-3 stagger-children" style="margin-top:40px;">
                 <div class="card-glass" style="padding:0;overflow:hidden;">
-                    <div style="height:180px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:3rem;">🏥</div>
+                    <div style="height:180px;background:url('https://thumbs.dreamstime.com/b/connected-dots-lines-graphic-big-data-abstract-concept-coding-background-cybersecurity-connections-digital-chaos-152104461.jpg') center/cover;position:relative;">
+                        <div style="position:absolute;inset:0;background:rgba(15,23,42,0.4);"></div>
+                        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;">🏥</div>
+                    </div>
                     <div style="padding:24px 20px;">
                         <h4 style="color:#fff;font-weight:700;" data-lang="en">HealthCare Portal</h4>
                         <h4 style="color:#fff;font-weight:700;" data-lang="ne">स्वास्थ्य सेवा पोर्टल</h4>
-                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">AI-powered patient management system.</p>
+                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">AI-powered patient management & secure data grid.</p>
                         <p style="color:#94A3B8;font-size:0.85rem;" data-lang="ne">AI-संचालित बिरामी व्यवस्थापन प्रणाली।</p>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="en">View Project →</a>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="ne">परियोजना हेर्नुहोस् →</a>
                     </div>
                 </div>
                 <div class="card-glass" style="padding:0;overflow:hidden;">
-                    <div style="height:180px;background:linear-gradient(135deg,#7C3AED,#06B6D4);display:flex;align-items:center;justify-content:center;font-size:3rem;">📊</div>
+                    <div style="height:180px;background:url('https://www.thecoderschool.com/blog/wp-content/uploads/2019/02/iStock-869356340.jpg') center/cover;position:relative;">
+                        <div style="position:absolute;inset:0;background:rgba(15,23,42,0.4);"></div>
+                        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;">📊</div>
+                    </div>
                     <div style="padding:24px 20px;">
                         <h4 style="color:#fff;font-weight:700;" data-lang="en">FinTech Dashboard</h4>
                         <h4 style="color:#fff;font-weight:700;" data-lang="ne">फिनटेक ड्यासबोर्ड</h4>
-                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">Real-time analytics for investment firms.</p>
+                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">Real-time analytics & code workspace for investment firms.</p>
                         <p style="color:#94A3B8;font-size:0.85rem;" data-lang="ne">लगानी फर्महरूको लागि वास्तविक-समय विश्लेषण।</p>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="en">View Project →</a>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="ne">परियोजना हेर्नुहोस् →</a>
                     </div>
                 </div>
                 <div class="card-glass" style="padding:0;overflow:hidden;">
-                    <div style="height:180px;background:linear-gradient(135deg,#F59E0B,#EF4444);display:flex;align-items:center;justify-content:center;font-size:3rem;">🛍️</div>
+                    <div style="height:180px;background:url('https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg') center/cover;position:relative;">
+                        <div style="position:absolute;inset:0;background:rgba(15,23,42,0.4);"></div>
+                        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;">🛍️</div>
+                    </div>
                     <div style="padding:24px 20px;">
                         <h4 style="color:#fff;font-weight:700;" data-lang="en">E-Commerce Platform</h4>
                         <h4 style="color:#fff;font-weight:700;" data-lang="ne">ई-कमर्स प्लेटफर्म</h4>
-                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">Scalable marketplace with AI recommendations.</p>
+                        <p style="color:#94A3B8;font-size:0.85rem;" data-lang="en">Scalable marketplace with futuristic AI recommendations.</p>
                         <p style="color:#94A3B8;font-size:0.85rem;" data-lang="ne">AI सिफारिसहरूसहित स्केलेबल बजार।</p>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="en">View Project →</a>
                         <a href="#" style="color:var(--primary);font-weight:600;font-size:0.85rem;display:inline-block;margin-top:10px;" data-lang="ne">परियोजना हेर्नुहोस् →</a>
@@ -1735,14 +2032,43 @@
                 <p class="section-sub mx-auto" data-lang="en">A transparent, agile approach from discovery to deployment.</p>
                 <p class="section-sub mx-auto" data-lang="ne">खोजदेखि तैनातीसम्मको पारदर्शी, चुस्त दृष्टिकोण।</p>
             </div>
-            <div class="timeline" id="timeline" style="max-width:600px;margin:40px auto 0;">
-                <div class="timeline-item"><h4 data-lang="en">🔍 Discovery</h4><h4 data-lang="ne">🔍 खोज</h4><p data-lang="en">Deep-dive into your goals, audience, and technical requirements.</p><p data-lang="ne">तपाईंको लक्ष्य, दर्शक, र प्राविधिक आवश्यकताहरूमा गहिरो अध्ययन।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">📐 Planning</h4><h4 data-lang="ne">📐 योजना</h4><p data-lang="en">Strategic roadmap, architecture design, and sprint planning.</p><p data-lang="ne">रणनीतिक रोडम्याप, वास्तुकला डिजाइन, र स्प्रिन्ट योजना।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">🎨 UI Design</h4><h4 data-lang="ne">🎨 UI डिजाइन</h4><p data-lang="en">Wireframing, prototyping, and visual design with user feedback.</p><p data-lang="ne">वायरफ्रेमिङ, प्रोटोटाइपिङ, र प्रयोगकर्ता प्रतिक्रियासहित दृश्य डिजाइन।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">⚙️ Development</h4><h4 data-lang="ne">⚙️ विकास</h4><p data-lang="en">Agile coding with continuous integration and testing.</p><p data-lang="ne">निरन्तर एकीकरण र परीक्षणको साथ चुस्त कोडिङ।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">🧪 Testing</h4><h4 data-lang="ne">🧪 परीक्षण</h4><p data-lang="en">Comprehensive QA, security audits, and performance tuning.</p><p data-lang="ne">व्यापक QA, सुरक्षा लेखापरीक्षण, र प्रदर्शन ट्युनिङ।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">🚀 Deployment</h4><h4 data-lang="ne">🚀 तैनाती</h4><p data-lang="en">Seamless launch with monitoring and rollback strategies.</p><p data-lang="ne">निगरानी र रोलब्याक रणनीतिहरूसहित निर्बाध लन्च।</p></div>
-                <div class="timeline-item"><h4 data-lang="en">🛠️ Maintenance</h4><h4 data-lang="ne">🛠️ मर्मत</h4><p data-lang="en">Ongoing support, updates, and feature enhancements.</p><p data-lang="ne">निरन्तर समर्थन, अपडेटहरू, र सुविधा वृद्धिहरू।</p></div>
+            
+            <div class="grid-2" style="margin-top:40px; align-items:center;">
+                <!-- Timeline items -->
+                <div class="timeline" id="timeline">
+                    <div class="timeline-item"><h4 data-lang="en">🔍 Discovery</h4><h4 data-lang="ne">🔍 खोज</h4><p data-lang="en">Deep-dive into your goals, audience, and technical requirements.</p><p data-lang="ne">तपाईंको लक्ष्य, दर्शक, र प्राविधिक आवश्यकताहरूमा गहिरो अध्ययन।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">📐 Planning</h4><h4 data-lang="ne">📐 योजना</h4><p data-lang="en">Strategic roadmap, architecture design, and sprint planning.</p><p data-lang="ne">रणनीतिक रोडम्याप, वास्तुकला डिजाइन, र स्प्रिन्ट योजना।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">🎨 UI Design</h4><h4 data-lang="ne">🎨 UI डिजाइन</h4><p data-lang="en">Wireframing, prototyping, and visual design with user feedback.</p><p data-lang="ne">वायरफ्रेमिङ, प्रोटोटाइपिङ, र प्रयोगकर्ता प्रतिक्रियासहित दृश्य डिजाइन।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">⚙️ Development</h4><h4 data-lang="ne">⚙️ विकास</h4><p data-lang="en">Agile coding with continuous integration and testing.</p><p data-lang="ne">निरन्तर एकीकरण र परीक्षणको साथ चुस्त कोडिङ।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">🧪 Testing</h4><h4 data-lang="ne">🧪 परीक्षण</h4><p data-lang="en">Comprehensive QA, security audits, and performance tuning.</p><p data-lang="ne">व्यापक QA, सुरक्षा लेखापरीक्षण, र प्रदर्शन ट्युनिङ।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">🚀 Deployment</h4><h4 data-lang="ne">🚀 तैनाती</h4><p data-lang="en">Seamless launch with monitoring and rollback strategies.</p><p data-lang="ne">निगरानी र रोलब्याक रणनीतिहरूसहित निर्बाध लन्च।</p></div>
+                    <div class="timeline-item"><h4 data-lang="en">🛠️ Maintenance</h4><h4 data-lang="ne">🛠️ मर्मत</h4><p data-lang="en">Ongoing support, updates, and feature enhancements.</p><p data-lang="ne">निरन्तर समर्थन, अपडेटहरू, र सुविधा वृद्धिहरू।</p></div>
+                </div>
+
+                <!-- 20-Second Animated Motion Video Showcase Card -->
+                <div class="process-motion-box reveal-right">
+                    <div class="motion-card">
+                        <div class="motion-media-wrap">
+                            <img src="https://share.google/FStIUwiyCuSXl3RXS" onerror="this.src='https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg'" alt="Development Process Animation" class="motion-img-20s" />
+                            <div class="motion-scanline"></div>
+                            <div class="motion-overlay">
+                                <div class="motion-badge">
+                                    <span class="live-pulse"></span>
+                                    <span>20s LIVE MOTION LOOP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="motion-controls">
+                            <div class="motion-info">
+                                <span class="step-label" id="motionStepLabel">Phase: Agile Software Lifecycle</span>
+                                <span class="time-label" id="motionTimer">00:00 / 00:20</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar-20s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1796,38 +2122,38 @@
             <div class="text-center reveal">
                 <div class="section-badge" data-lang="en">Meet the Team</div>
                 <div class="section-badge" data-lang="ne">टिमलाई भेट्नुहोस्</div>
-                <h2 class="section-title" data-lang="en">Our <span>Experts</span></h2>
-                <h2 class="section-title" data-lang="ne">हाम्रा <span>विज्ञहरू</span></h2>
+                <h2 class="section-title" data-lang="en">Our <span>Team</span></h2>
+                <h2 class="section-title" data-lang="ne">हाम्रो <span>टिम</span></h2>
                 <p class="section-sub mx-auto" data-lang="en">Passionate technologists driving innovation for your success.</p>
                 <p class="section-sub mx-auto" data-lang="ne">तपाईंको सफलताको लागि नवीनता चलाउने भावुक प्रविधिविद्हरू।</p>
             </div>
             <div class="grid-4 stagger-children" style="margin-top:40px;">
                 <div class="team-card">
-                    <div class="photo">AK</div>
-                    <h4>Arjun Kumar</h4>
-                    <div class="role" data-lang="en">CEO & Founder</div>
-                    <div class="role" data-lang="ne">CEO र संस्थापक</div>
+                    <div class="photo">JP</div>
+                    <h4>Jyoti Prakash Prasain</h4>
+                    <div class="role" data-lang="en">Founder & Chairperson</div>
+                    <div class="role" data-lang="ne">संस्थापक र अध्यक्ष</div>
                     <div class="socials"><a href="#">🔗</a><a href="#">🐙</a></div>
                 </div>
                 <div class="team-card">
-                    <div class="photo">PS</div>
-                    <h4>Priya Sharma</h4>
-                    <div class="role" data-lang="en">CTO, AI Lead</div>
-                    <div class="role" data-lang="ne">CTO, AI प्रमुख</div>
+                    <div class="photo">SS</div>
+                    <h4>Sujan Subedi</h4>
+                    <div class="role" data-lang="en">CEO, Co-founder & Project Lead</div>
+                    <div class="role" data-lang="ne">CEO, सह-संस्थापक र प्रोजेक्ट लिड</div>
                     <div class="socials"><a href="#">🔗</a><a href="#">🐙</a></div>
                 </div>
                 <div class="team-card">
-                    <div class="photo">RV</div>
-                    <h4>Rahul Verma</h4>
-                    <div class="role" data-lang="en">Head of Engineering</div>
-                    <div class="role" data-lang="ne">इन्जिनियरिङ प्रमुख</div>
+                    <div class="photo">RB</div>
+                    <h4>Raj Budathoki</h4>
+                    <div class="role" data-lang="en">Manager, Co-founder & Marketing Head</div>
+                    <div class="role" data-lang="ne">म्यानेजर, सह-संस्थापक र मार्केटिङ प्रमुख</div>
                     <div class="socials"><a href="#">🔗</a><a href="#">🐙</a></div>
                 </div>
                 <div class="team-card">
-                    <div class="photo">AN</div>
-                    <h4>Ananya Nair</h4>
-                    <div class="role" data-lang="en">UX Design Director</div>
-                    <div class="role" data-lang="ne">UX डिजाइन निर्देशक</div>
+                    <div class="photo">S</div>
+                    <h4>Sushil</h4>
+                    <div class="role" data-lang="en">Co-Founder & PRO</div>
+                    <div class="role" data-lang="ne">सह-संस्थापक र PRO</div>
                     <div class="socials"><a href="#">🔗</a><a href="#">🐙</a></div>
                 </div>
             </div>
@@ -2106,23 +2432,42 @@
             initTimeline();
             initLanguage();
             initSlideshow();
+            initProcessMotion20s();
         });
 
-        // ===== HERO SLIDESHOW =====
+        // ===== HERO SLIDESHOW & DOT CONTROLS =====
         function initSlideshow() {
             const slides = document.querySelectorAll('#heroSlideshow .slide');
+            const dots = document.querySelectorAll('#slideshowDots .slideshow-dot');
             let current = 0;
             const total = slides.length;
+            let timer = null;
 
             if (total === 0) return;
 
-            slides.forEach((s, i) => s.classList.toggle('active', i === 0));
+            function goToSlide(index) {
+                slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                current = index;
+            }
 
-            setInterval(() => {
-                slides[current].classList.remove('active');
-                current = (current + 1) % total;
-                slides[current].classList.add('active');
-            }, 4500);
+            function startTimer() {
+                clearInterval(timer);
+                timer = setInterval(() => {
+                    let next = (current + 1) % total;
+                    goToSlide(next);
+                }, 4000);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    startTimer();
+                });
+            });
+
+            goToSlide(0);
+            startTimer();
         }
 
         // ===== GSAP + SCROLLTRIGGER =====
@@ -2438,10 +2783,35 @@
             });
         });
 
-        console.log('🚀 Bella IT Centre — Website Loaded.');
-        console.log('⚙️ Admin Panel: Click the button bottom-right.');
-        console.log('🌐 Bilingual: English / Nepali with accurate translations.');
-        console.log('📍 Location updated: Damak-5, Traffic Chowk, Near Gorkha Department, Jhapa, Nepal.');
+        // ===== 20s PROCESS MOTION ANIMATION TIMER =====
+        function initProcessMotion20s() {
+            const timerEl = document.getElementById('motionTimer');
+            const labelEl = document.getElementById('motionStepLabel');
+            if (!timerEl) return;
+
+            const phases = [
+                'Phase 1: Discovery & Research',
+                'Phase 2: Architecture & Planning',
+                'Phase 3: UI/UX & Prototyping',
+                'Phase 4: Full-Stack Engineering',
+                'Phase 5: Automated Testing & QA',
+                'Phase 6: Cloud Deployment & Monitoring'
+            ];
+
+            let seconds = 0;
+            setInterval(() => {
+                seconds = (seconds + 1) % 21;
+                const secStr = seconds < 10 ? '0' + seconds : '' + seconds;
+                timerEl.textContent = `00:${secStr} / 00:20`;
+
+                const phaseIdx = Math.min(Math.floor((seconds / 20) * phases.length), phases.length - 1);
+                if (labelEl) {
+                    labelEl.textContent = phases[phaseIdx];
+                }
+            }, 1000);
+        }
+
+        console.log('🚀 Bella IT Centre — 20s Motion Animation integrated into Development Process section.');
     </script>
 
 </body>
