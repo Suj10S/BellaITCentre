@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ============================================================
+       BELLA IT CENTRE — MAIN WEBSITE
+       Version: 2.0 (Admin Panel & 20s Animation Removed)
+       ============================================================ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -24,7 +28,7 @@
 
   <style>
     /* ============================================================
-       BELLA IT CENTRE — MAIN STYLESHEET
+       BELLA IT CENTRE — MAIN STYLESHEET (Admin & 20s Animation Removed)
        Table of Contents:
        1. Reset & Base
        2. 3D Global Animation Engine
@@ -37,15 +41,14 @@
        9. Services
        10. Tech Grid
        11. Stats
-       12. Process & 20s Motion
+       12. Process (Timeline only, no 20s motion)
        13. Testimonials
        14. Team
        15. Pricing
        16. FAQ
        17. Contact (transparent background)
        18. Footer
-       19. Admin Panel
-       20. Custom Cursor
+       19. Custom Cursor
     ============================================================ */
 
     /* ===== 1. RESET & BASE ===== */
@@ -601,6 +604,43 @@
     .service-card:hover .icon { transform: scale(1.2) rotate(-8deg); }
     .service-card h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .service-card p { color: #94A3B8; font-size: 0.9rem; line-height: 1.7; }
+    /* App dev motion background removed — keeping only static card */
+    .service-card.app-dev-motion-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15);
+      transition: var(--transition);
+    }
+    .service-card.app-dev-motion-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--secondary);
+      box-shadow: 0 25px 50px rgba(6, 182, 212, 0.35);
+    }
+    .app-dev-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.65) 100%);
+      z-index: 0;
+    }
+    .app-dev-content {
+      position: relative;
+      z-index: 2;
+    }
+    .motion-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 4px 12px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: 0.05em;
+    }
 
     /* ===== 10. TECH ===== */
     .tech-grid {
@@ -644,7 +684,7 @@
     .stat-card .label { color: #94A3B8; font-weight: 500; margin-top: 4px; }
     .stat-card .suffix { font-size: 1.8rem; -webkit-text-fill-color: initial; color: var(--secondary); }
 
-    /* ===== 12. PROCESS & 20s MOTION ===== */
+    /* ===== 12. PROCESS (Timeline only, no 20s motion) ===== */
     .timeline {
       display: flex;
       flex-direction: column;
@@ -686,117 +726,6 @@
     }
     .timeline-item h4 { color: #fff; font-weight: 700; font-size: 1.1rem; }
     .timeline-item p { color: #94A3B8; font-size: 0.85rem; }
-
-    .process-motion-box { position: relative; width: 100%; perspective: 1000px; }
-    .motion-card {
-      background: rgba(15,23,42,0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 30px rgba(37,99,235,0.2);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), border-color 0.5s;
-    }
-    .motion-card:hover {
-      transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
-      border-color: rgba(37,99,235,0.5);
-      box-shadow: 0 35px 80px rgba(0,0,0,0.7), 0 0 50px rgba(6,182,212,0.3);
-    }
-    .motion-media-wrap {
-      position: relative;
-      width: 100%;
-      height: 340px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #090D16;
-    }
-    .motion-img-20s {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: motionLoop20s 20s cubic-bezier(0.4,0,0.2,1) infinite;
-      transform-origin: center center;
-    }
-    @keyframes motionLoop20s {
-      0% { transform: scale(1) rotate(0deg) translateY(0px); filter: brightness(1) contrast(1); }
-      25% { transform: scale(1.12) rotate(1.5deg) translateY(-12px); filter: brightness(1.15) contrast(1.05); }
-      50% { transform: scale(1.22) rotate(-2deg) translateY(-6px); filter: brightness(1.25) contrast(1.1); }
-      75% { transform: scale(1.08) rotate(1deg) translateY(-14px); filter: brightness(1.1) contrast(1.02); }
-      100% { transform: scale(1) rotate(0deg) translateY(0px); filter: brightness(1) contrast(1); }
-    }
-    .motion-scanline {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(6,182,212,0.18) 50%, transparent 100%);
-      height: 40%;
-      animation: scanWave 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes scanWave {
-      0% { top: -40%; }
-      100% { top: 100%; }
-    }
-    .motion-overlay {
-      position: absolute;
-      top: 14px; left: 14px;
-      z-index: 5;
-    }
-    .motion-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15,23,42,0.85);
-      backdrop-filter: blur(10px);
-      padding: 6px 14px;
-      border-radius: 40px;
-      border: 1px solid rgba(6,182,212,0.3);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--secondary);
-      letter-spacing: 0.08em;
-    }
-    .live-pulse {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22C55E;
-      box-shadow: 0 0 10px #22C55E;
-      animation: blinkPulse 1.2s infinite;
-    }
-    @keyframes blinkPulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-    }
-    .motion-controls { margin-top: 14px; }
-    .motion-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: #94A3B8;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .progress-bar-20s {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-      animation: progress20s 20s linear infinite;
-      border-radius: 10px;
-    }
-    @keyframes progress20s {
-      0% { width: 0%; }
-      100% { width: 100%; }
-    }
 
     /* ===== 13. TESTIMONIALS ===== */
     .testimonial-card {
@@ -974,7 +903,7 @@
     .contact-form textarea { min-height: 130px; resize: vertical; }
     .contact-form .form-group { margin-bottom: 18px; }
 
-    /* --- Light blue styling for the select dropdown (radio style) --- */
+    /* Light blue styling for the select dropdown */
     .contact-form select {
       background-color: rgba(6, 182, 212, 0.08);
       border-color: rgba(6, 182, 212, 0.3);
@@ -1057,137 +986,6 @@
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     }
 
-    /* ===== 19. ADMIN PANEL ===== */
-    #admin-toggle {
-      position: fixed;
-      bottom: 24px; right: 24px;
-      z-index: 9999;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff;
-      border: none;
-      border-radius: 60px;
-      padding: 12px 24px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      box-shadow: 0 0 40px rgba(37,99,235,0.3);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    #admin-toggle:hover { transform: scale(1.05); box-shadow: 0 0 60px rgba(37,99,235,0.5); }
-    #admin-panel {
-      position: fixed;
-      top: 0; right: -480px;
-      width: 480px;
-      height: 100vh;
-      background: rgba(15,23,42,0.98);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border-left: 1px solid rgba(255,255,255,0.06);
-      z-index: 99999;
-      transition: 0.6s cubic-bezier(0.23,1,0.32,1);
-      padding: 24px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    #admin-panel.open { right: 0; }
-    #admin-panel .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 20px;
-    }
-    #admin-panel .panel-header h2 { color: #fff; font-weight: 800; font-size: 1.4rem; }
-    #admin-panel .panel-header h2 span { color: var(--primary); }
-    #admin-panel .panel-close {
-      background: none;
-      border: none;
-      color: #94A3B8;
-      font-size: 1.6rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    #admin-panel .panel-close:hover { color: #fff; transform: rotate(90deg); }
-    .admin-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .admin-stat {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-    }
-    .admin-stat .num { font-size: 1.8rem; font-weight: 800; color: #fff; }
-    .admin-stat .label { font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; }
-    .admin-stat .num.blue { color: var(--primary); }
-    .admin-stat .num.green { color: #22C55E; }
-    .admin-stat .num.amber { color: var(--accent); }
-    .admin-table-wrap { flex: 1; overflow: auto; }
-    .admin-table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    .admin-table-wrap th {
-      text-align: left;
-      padding: 10px 8px;
-      color: #94A3B8;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .admin-table-wrap td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.03); color: #CBD5E1; }
-    .admin-table-wrap .status {
-      display: inline-block;
-      padding: 2px 14px;
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-    .admin-table-wrap .status.active { background: rgba(34,197,94,0.15); color: #22C55E; }
-    .admin-table-wrap .status.pending { background: rgba(245,158,11,0.15); color: var(--accent); }
-    .admin-table-wrap .status.inactive { background: rgba(239,68,68,0.15); color: #EF4444; }
-    .admin-tabs {
-      display: flex;
-      gap: 4px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 4px;
-      margin-bottom: 20px;
-    }
-    .admin-tabs button {
-      flex: 1;
-      padding: 8px 12px;
-      border: none;
-      background: transparent;
-      color: #94A3B8;
-      font-weight: 600;
-      font-size: 0.8rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .admin-tabs button.active { background: var(--primary); color: #fff; }
-    .admin-tabs button:hover:not(.active) { color: #fff; }
-    .admin-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 99998;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.5s;
-    }
-    .admin-overlay.show { opacity: 1; visibility: visible; }
-    @media (max-width: 600px) {
-      #admin-panel { width: 100%; right: -100%; }
-      .admin-stats { grid-template-columns: 1fr 1fr; }
-    }
-
     /* ===== SCROLL ANIMATION HELPERS ===== */
     .reveal { opacity: 0; transform: translateY(50px); transition: 0.9s cubic-bezier(0.23,1,0.32,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -1210,7 +1008,7 @@
     .stagger-children.visible>*:nth-child(6) { transition-delay: 0.3s; }
     .stagger-children.visible>* { opacity: 1; transform: translateY(0); }
 
-    /* ===== 20. CUSTOM CURSOR ===== */
+    /* ===== 19. CUSTOM CURSOR ===== */
     #custom-cursor {
       position: fixed;
       width: 40px; height: 40px;
@@ -1236,6 +1034,32 @@
       transition: width 0.2s, height 0.2s;
     }
     .cursor-dot.hover { width: 10px; height: 10px; background: var(--secondary); }
+
+    /* ===== ADMIN LINK (Floating button to admin panel) ===== */
+    #admin-link {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      border-radius: 60px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 0 40px rgba(37,99,235,0.3);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    #admin-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(37,99,235,0.5);
+    }
   </style>
 </head>
 <body>
@@ -1349,15 +1173,12 @@
         <p>High-performance websites & web apps with modern frameworks.</p>
       </div>
       <div class="service-card card-glass app-dev-motion-card">
-        <div class="app-dev-bg-wrap">
-          <img src="https://share.google/FStIUwiyCuSXl3RXS" onerror="this.src='https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg'" alt="App Development Motion Video" class="app-dev-bg-motion" />
-          <div class="app-dev-overlay"></div>
-        </div>
+        <div class="app-dev-overlay"></div>
         <div class="app-dev-content">
           <div class="icon">📱</div>
           <h3>App Development</h3>
           <p>Native & cross-platform mobile experiences for iOS, Android & Web.</p>
-          <div class="motion-tag"><span class="live-pulse"></span><span>20s Motion Video BG</span></div>
+          <div class="motion-tag"><span class="live-pulse"></span><span>Mobile-First Development</span></div>
         </div>
       </div>
       <div class="service-card card-glass">
@@ -1479,7 +1300,7 @@
   </div>
 </section>
 
-<!-- ===== PROCESS ===== -->
+<!-- ===== PROCESS (Timeline only) ===== -->
 <section id="process">
   <div class="container">
     <div class="text-center reveal">
@@ -1497,22 +1318,12 @@
         <div class="timeline-item"><h4>🚀 Deployment</h4><p>Seamless launch with monitoring and rollback strategies.</p></div>
         <div class="timeline-item"><h4>🛠️ Maintenance</h4><p>Ongoing support, updates, and feature enhancements.</p></div>
       </div>
-      <div class="process-motion-box reveal-right">
-        <div class="motion-card">
-          <div class="motion-media-wrap">
-            <img src="https://share.google/FStIUwiyCuSXl3RXS" onerror="this.src='https://thumbs.dreamstime.com/b/creative-coding-backdrop-dark-text-programming-future-concept-d-rendering-147291480.jpg'" alt="Development Process Animation" class="motion-img-20s" />
-            <div class="motion-scanline"></div>
-            <div class="motion-overlay">
-              <div class="motion-badge"><span class="live-pulse"></span><span>20s LIVE MOTION LOOP</span></div>
-            </div>
-          </div>
-          <div class="motion-controls">
-            <div class="motion-info">
-              <span class="step-label" id="motionStepLabel">Phase: Agile Software Lifecycle</span>
-              <span class="time-label" id="motionTimer">00:00 / 00:20</span>
-            </div>
-            <div class="progress-track"><div class="progress-bar-20s"></div></div>
-          </div>
+      <!-- Right side: placeholder card (no 20s animation) -->
+      <div class="reveal-right" style="display:flex;justify-content:center;align-items:center;">
+        <div class="card-glass" style="width:100%;text-align:center;padding:40px 20px;">
+          <div style="font-size:4rem;margin-bottom:16px;">🚀</div>
+          <h3 style="color:#fff;font-weight:700;margin-bottom:8px;">Agile Development</h3>
+          <p style="color:#94A3B8;font-size:0.95rem;line-height:1.7;">We follow a structured, iterative process that ensures quality, transparency, and client satisfaction at every stage.</p>
         </div>
       </div>
     </div>
@@ -1624,7 +1435,7 @@
   </div>
 </section>
 
-<!-- ===== CONTACT (transparent background) ===== -->
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="container">
     <div class="text-center reveal">
@@ -1645,7 +1456,6 @@
         <div class="form-group"><input type="tel" placeholder="Phone Number" /></div>
         <div class="form-group"><input type="text" placeholder="Company Name" /></div>
         <div class="form-group">
-          <!-- Light blue styled select (radio button style) -->
           <select>
             <option>Select Service</option>
             <option>Web Development</option>
@@ -1701,92 +1511,14 @@
   </div>
 </footer>
 
-<!-- ===== ADMIN TOGGLE ===== -->
-<button id="admin-toggle">⚙️ Admin Panel</button>
-<div class="admin-overlay" id="adminOverlay"></div>
-
-<!-- ===== ADMIN PANEL ===== -->
-<div id="admin-panel">
-  <div class="panel-header">
-    <h2>BELLA <span>IT CENTRE</span> · Admin</h2>
-    <button class="panel-close" id="adminClose">✕</button>
-  </div>
-  <div class="admin-tabs">
-    <button class="active" data-tab="dashboard">Dashboard</button>
-    <button data-tab="projects">Projects</button>
-    <button data-tab="settings">Settings</button>
-  </div>
-  <div id="adminContent">
-    <div id="tab-dashboard">
-      <div class="admin-stats">
-        <div class="admin-stat"><div class="num blue">24</div><div class="label">Active Projects</div></div>
-        <div class="admin-stat"><div class="num green">12</div><div class="label">Completed</div></div>
-        <div class="admin-stat"><div class="num amber">8</div><div class="label">In Review</div></div>
-        <div class="admin-stat"><div class="num">4</div><div class="label">On Hold</div></div>
-      </div>
-      <div class="admin-table-wrap">
-        <table>
-          <thead><tr><th>Project</th><th>Client</th><th>Status</th><th>Budget</th></tr></thead>
-          <tbody>
-            <tr><td>HealthPortal</td><td>MediCorp</td><td><span class="status active">Active</span></td><td>$12,500</td></tr>
-            <tr><td>FinDash</td><td>Investly</td><td><span class="status active">Active</span></td><td>$18,200</td></tr>
-            <tr><td>EcomPlus</td><td>RetailHub</td><td><span class="status pending">Pending</span></td><td>$9,800</td></tr>
-            <tr><td>AI Chat</td><td>SupportPro</td><td><span class="status inactive">Inactive</span></td><td>$6,400</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="tab-projects" style="display:none;">
-      <p style="color:#94A3B8;margin-bottom:16px;">Manage your project pipeline.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-        <button style="padding:8px 20px;background:var(--primary);border:none;border-radius:60px;color:#fff;font-weight:600;cursor:pointer;">+ New Project</button>
-      </div>
-      <div class="admin-table-wrap">
-        <table>
-          <thead><tr><th>Name</th><th>Lead</th><th>Deadline</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>HealthPortal</td><td>Arjun</td><td>2025-04-15</td><td><span class="status active">Active</span></td></tr>
-            <tr><td>FinDash</td><td>Priya</td><td>2025-05-01</td><td><span class="status active">Active</span></td></tr>
-            <tr><td>EcomPlus</td><td>Rahul</td><td>2025-03-30</td><td><span class="status pending">Pending</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="tab-settings" style="display:none;">
-      <p style="color:#94A3B8;margin-bottom:16px;">Panel settings & preferences.</p>
-      <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:20px;">
-        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
-          <span style="color:#fff;">Dark Mode</span><span style="color:#94A3B8;">Enabled</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
-          <span style="color:#fff;">Notifications</span><span style="color:#94A3B8;">Email + In-app</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:10px 0;">
-          <span style="color:#fff;">API Access</span><span style="color:#94A3B8;">Active</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- ===== ADMIN LINK (opens admin panel website) ===== -->
+<a href="admin-panel.html" id="admin-link" target="_blank">⚙️ Admin Panel</a>
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
   /* ==========================================================
      BELLA IT CENTRE — MAIN JAVASCRIPT
-     Table of Contents:
-     1. Loader & Init
-     2. Hero Slideshow
-     3. GSAP + ScrollTrigger
-     4. Counters
-     5. Timeline
-     6. Nav Toggle
-     7. FAQ
-     8. Admin Panel
-     9. Custom Cursor
-    10. Three.js Hero Background
-    11. Contact Form
-    12. Smooth Scroll
-    13. 20s Process Motion Timer
+     (Admin Panel & 20s Animation Removed)
   ========================================================== */
 
   // ===== 1. LOADER & INIT =====
@@ -1796,7 +1528,6 @@
     initCounters();
     initTimeline();
     initSlideshow();
-    initProcessMotion20s();
   });
 
   // ===== 2. HERO SLIDESHOW =====
@@ -1902,27 +1633,7 @@
     });
   });
 
-  // ===== 8. ADMIN PANEL =====
-  const adminToggle = document.getElementById('admin-toggle');
-  const adminPanel = document.getElementById('admin-panel');
-  const adminOverlay = document.getElementById('adminOverlay');
-  const adminClose = document.getElementById('adminClose');
-  function openAdmin() { adminPanel.classList.add('open'); adminOverlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
-  function closeAdmin() { adminPanel.classList.remove('open'); adminOverlay.classList.remove('show'); document.body.style.overflow = ''; }
-  adminToggle.addEventListener('click', openAdmin);
-  adminClose.addEventListener('click', closeAdmin);
-  adminOverlay.addEventListener('click', closeAdmin);
-  document.querySelectorAll('.admin-tabs button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.admin-tabs button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const tab = btn.dataset.tab;
-      document.querySelectorAll('#adminContent > div').forEach(div => div.style.display = 'none');
-      document.getElementById('tab-' + tab).style.display = 'block';
-    });
-  });
-
-  // ===== 9. CUSTOM CURSOR =====
+  // ===== 8. CUSTOM CURSOR =====
   const cursor = document.getElementById('custom-cursor');
   const dot = document.getElementById('cursor-dot');
   let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
@@ -1945,7 +1656,7 @@
       el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); dot.classList.remove('hover'); });
     });
 
-  // ===== 10. THREE.JS HERO BACKGROUND =====
+  // ===== 9. THREE.JS HERO BACKGROUND =====
   (function initThree() {
     const container = document.getElementById('hero-canvas');
     if (!container) return;
@@ -1995,7 +1706,7 @@
     });
   })();
 
-  // ===== 11. CONTACT FORM =====
+  // ===== 10. CONTACT FORM =====
   document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
@@ -2005,7 +1716,7 @@
     setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; e.target.reset(); }, 3000);
   });
 
-  // ===== 12. SMOOTH SCROLL =====
+  // ===== 11. SMOOTH SCROLL =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -2013,26 +1724,7 @@
     });
   });
 
-  // ===== 13. 20s PROCESS MOTION TIMER =====
-  function initProcessMotion20s() {
-    const timerEl = document.getElementById('motionTimer');
-    const labelEl = document.getElementById('motionStepLabel');
-    if (!timerEl) return;
-    const phases = [
-      'Phase 1: Discovery & Research', 'Phase 2: Architecture & Planning',
-      'Phase 3: UI/UX & Prototyping', 'Phase 4: Full-Stack Engineering',
-      'Phase 5: Automated Testing & QA', 'Phase 6: Cloud Deployment & Monitoring'
-    ];
-    let seconds = 0;
-    setInterval(() => {
-      seconds = (seconds + 1) % 21;
-      const secStr = seconds < 10 ? '0' + seconds : '' + seconds;
-      timerEl.textContent = `00:${secStr} / 00:20`;
-      const phaseIdx = Math.min(Math.floor((seconds / 20) * phases.length), phases.length - 1);
-      if (labelEl) { labelEl.textContent = phases[phaseIdx]; }
-    }, 1000);
-  }
-  console.log('🚀 Bella IT Centre — All systems ready.');
+  console.log('🚀 Bella IT Centre — Main website ready. Admin panel linked.');
 </script>
 </body>
 </html>
