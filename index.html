@@ -937,83 +937,71 @@
             }
         }
 
-        /* ===== SERVICES ===== */
-        .service-card .icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            display: inline-block;
-            transition: 0.3s;
-        }
-        .service-card:hover .icon {
-            transform: scale(1.1) rotate(-4deg);
-        }
-        .service-card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-        .service-card p {
-            color: #94A3B8;
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-        .service-card.app-dev-motion-card {
+        /* ===== SERVICES (with MP4 video background) ===== */
+        #services {
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+            padding: 70px 0;
         }
-        .service-card.app-dev-motion-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.25);
+        .services-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
         }
-        .app-dev-overlay {
+        .services-video-bg video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .services-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 100%);
-            z-index: 0;
+            z-index: 1;
+            background: linear-gradient(180deg,
+                    rgba(15, 23, 42, 0.92) 0%,
+                    rgba(15, 23, 42, 0.70) 40%,
+                    rgba(15, 23, 42, 0.75) 70%,
+                    rgba(15, 23, 42, 0.92) 100%);
         }
-        .app-dev-content {
+        #services .container {
             position: relative;
             z-index: 2;
         }
-        .motion-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 10px;
-            padding: 3px 10px;
-            background: rgba(6, 182, 212, 0.12);
-            border: 1px solid rgba(6, 182, 212, 0.25);
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--secondary);
-            letter-spacing: 0.05em;
+        #services .section-title,
+        #services .section-sub {
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
         }
-        .live-pulse {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #22C55E;
-            box-shadow: 0 0 8px #22C55E;
-            animation: blinkPulse 1.2s infinite;
+        #services .service-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        @keyframes blinkPulse {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.8);
-            }
+        #services .service-card:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+        #services .service-card.app-dev-motion-card {
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        #services .service-card.app-dev-motion-card:hover {
+            border-color: var(--secondary);
         }
 
         /* ===== TECH ===== */
+        #tech {
+            background: rgba(255, 255, 255, 0.01);
+        }
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -1866,8 +1854,17 @@
         </div>
     </section>
 
-    <!-- ===== SERVICES ===== -->
+    <!-- ===== SERVICES (with binary.mp4 background) ===== -->
     <section id="services" aria-label="Our services">
+        <!-- MP4 background video -->
+        <div class="services-video-bg">
+            <video autoplay muted loop playsinline>
+                <source src="binary.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="services-overlay"></div>
+
         <div class="container">
             <div class="text-center reveal">
                 <div class="section-badge">What We Do</div>
@@ -1914,7 +1911,7 @@
     </section>
 
     <!-- ===== TECH ===== -->
-    <section id="tech" aria-label="Technologies we use" style="background:rgba(255,255,255,0.01);">
+    <section id="tech" aria-label="Technologies we use">
         <div class="container">
             <div class="text-center reveal">
                 <div class="section-badge">Tech Stack</div>
@@ -2714,7 +2711,7 @@
             });
         });
 
-        console.log('🚀 Bella IT Centre — Fully loaded with MP4 background and 50ms loader.');
+        console.log('🚀 Bella IT Centre — Fully loaded with binary.mp4 as Services background.');
     </script>
 
 </body>
