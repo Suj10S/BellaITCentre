@@ -119,8 +119,6 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="https://www.youtube.com" />
-    <link rel="dns-prefetch" href="https://www.youtube.com" />
 
     <!-- Google Fonts (optimized) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -1075,7 +1073,7 @@
             color: var(--secondary);
         }
 
-        /* ===== PROCESS (with YouTube background) ===== */
+        /* ===== PROCESS (with MP4 video background) ===== */
         #process {
             position: relative;
             overflow: hidden;
@@ -1091,14 +1089,16 @@
             overflow: hidden;
             pointer-events: none;
         }
-        .process-video-bg iframe {
+        .process-video-bg video {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             transform: translate(-50%, -50%);
-            border: none;
+            object-fit: cover;
             pointer-events: none;
         }
         .process-overlay {
@@ -2008,17 +2008,14 @@
         </div>
     </section>
 
-    <!-- ===== PROCESS (with YouTube background) ===== -->
+    <!-- ===== PROCESS (with MP4 video background) ===== -->
     <section id="process" aria-label="Development process">
-        <!-- YouTube background video (no controls) -->
+        <!-- MP4 background video (no controls) -->
         <div class="process-video-bg">
-            <iframe
-            src="https://www.youtube.com/embed/chqYM46Zo7c?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&playsinline=1&playlist=chqYM46Zo7c&showinfo=0&rel=0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            loading="lazy"
-            title="Development Process Background Video"
-            ></iframe>
+            <video autoplay muted loop playsinline>
+                <source src="Glowing_nodes_linking_data_disco…_202608021206.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="process-overlay"></div>
 
@@ -2713,7 +2710,7 @@
             });
         });
 
-        console.log('🚀 Bella IT Centre — Fully loaded with YouTube background process video.');
+        console.log('🚀 Bella IT Centre — Fully loaded with MP4 background process video.');
     </script>
 
 </body>
