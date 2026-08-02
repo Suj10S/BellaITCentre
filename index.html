@@ -476,7 +476,7 @@
             justify-content: center;
             flex-direction: column;
             gap: 16px;
-            transition: opacity 0.6s, visibility 0.6s;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         #loader.hidden {
             opacity: 0;
@@ -2420,9 +2420,14 @@
            BELLA IT CENTRE — OPTIMISED JAVASCRIPT
            ========================================================== */
 
-        // ===== 1. LOADER & INIT =====
-        window.addEventListener('load', () => {
-            document.getElementById('loader').classList.add('hidden');
+        // ===== 1. LOADER & INIT (hidden after 50ms) =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loader almost instantly
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 50);
+
+            // Initialize everything
             initAnimations();
             initCounters();
             initTimeline();
@@ -2710,7 +2715,7 @@
             });
         });
 
-        console.log('🚀 Bella IT Centre — Fully loaded with MP4 background process video.');
+        console.log('🚀 Bella IT Centre — Fully loaded with MP4 background and 50ms loader.');
     </script>
 
 </body>
