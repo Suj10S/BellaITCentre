@@ -17,7 +17,9 @@
     <meta property="og:description" content="We build high-performance software, mobile apps, and digital marketing solutions for businesses worldwide. Trusted IT partner in Nepal." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bellaitcentre.com/" />
-    <meta property="og:image" content="https://bellaitcentre.com/og-image.jpg" />
+    <meta property="og:image" content="logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Bella I.T. Centre" />
     <meta property="og:locale" content="en_US" />
 
@@ -25,6 +27,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Bella I.T. Centre — Leading IT &amp; Digital Marketing Agency" />
     <meta name="twitter:description" content="High-performance web & mobile apps, SEO, SMM, and digital marketing from Nepal's trusted IT partner." />
+    <meta name="twitter:image" content="logo.png" />
 
     <!-- ===== STRUCTURED DATA ===== -->
     <script type="application/ld+json">
@@ -33,7 +36,7 @@
             "@type": "Organization",
             "name": "Bella I.T. Centre",
             "url": "https://bellaitcentre.com/",
-            "logo": "https://bellaitcentre.com/logo.png",
+            "logo": "logo.png",
             "description": "Bella I.T. Centre delivers high-performance software, mobile apps, SEO, SMM, and digital marketing solutions.",
             "address": {
                 "@type": "PostalAddress",
@@ -54,8 +57,9 @@
         }
     </script>
 
-    <!-- ===== FAVICON ===== -->
-    <link rel="icon" href="favicon.ico" sizes="any" />
+    <!-- ===== FAVICON (logo.png) ===== -->
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="logo.png" />
 
     <!-- ===== PRELOAD & DNS ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -160,8 +164,7 @@
         .team-card,
         .pricing-card,
         .testimonial-card,
-        .stat-card,
-        .tech-item {
+        .stat-card {
             transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s;
             position: relative;
             will-change: transform;
@@ -454,8 +457,10 @@
             letter-spacing: -0.03em;
             color: #0F172A;
         }
-        .nav-logo svg {
+        .nav-logo img {
+            border-radius: 6px;
             flex-shrink: 0;
+            object-fit: cover;
         }
         .nav-logo .brand-main span {
             color: var(--primary);
@@ -551,7 +556,7 @@
             .nav-logo {
                 font-size: 1rem;
             }
-            .nav-logo svg {
+            .nav-logo img {
                 width: 28px;
                 height: 28px;
             }
@@ -858,35 +863,68 @@
             transform: translateY(-5px);
         }
 
-        /* ===== TECH ===== */
+        /* ===== TECH SLIDER (horizontal auto-slider) ===== */
         #tech {
             background: #F8FAFC;
+            overflow: hidden;
+        }
+        .tech-slider-container {
+            position: relative;
+            max-width: 400px;
+            margin: 24px auto 0;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .tech-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
         }
         .tech-item {
-            background: #FFFFFF;
-            backdrop-filter: none;
-            border: 1px solid #E2E8F0;
-            box-shadow: none;
-            padding: 16px 10px;
-            border-radius: 12px;
+            flex: 0 0 100%;
+            padding: 24px 16px;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #475569;
-            transition: var(--transition);
-            cursor: default;
-        }
-        .tech-item:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            background: #EFF6FF;
             color: #0F172A;
-            box-shadow: 0 8px 20px -10px rgba(37, 99, 235, 0.15);
+            background: #FFFFFF;
+            border-right: 1px solid #F1F5F9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 100px;
+        }
+        .tech-item:last-child {
+            border-right: none;
         }
         .tech-item .tech-icon {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             display: block;
             margin-bottom: 4px;
+        }
+        .tech-slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .tech-slider-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .tech-slider-dots span.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 12px;
         }
 
         /* ===== STATS ===== */
@@ -1092,6 +1130,9 @@
                 left: -22px;
                 width: 10px;
                 height: 10px;
+            }
+            .tech-slider-container {
+                max-width: 280px;
             }
         }
 
@@ -1577,6 +1618,9 @@
             .trusted-track {
                 animation-duration: 40s;
             }
+            .tech-track {
+                transition: none !important;
+            }
         }
     </style>
 </head>
@@ -1599,17 +1643,9 @@
     <!-- ===== NAV ===== -->
     <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
+            <!-- ===== NAVBAR LOGO (logo.png) ===== -->
             <div class="nav-logo">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:8px; flex-shrink:0;">
-                    <rect width="34" height="34" rx="8" fill="url(#logoGrad)"/>
-                    <defs>
-                        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#2563EB"/>
-                            <stop offset="100%" stop-color="#475569"/>
-                        </linearGradient>
-                    </defs>
-                    <text x="17" y="18" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="central">B</text>
-                </svg>
+                <img src="logo.png" alt="Bella I.T. Centre Logo" width="34" height="34" />
                 <span class="brand-main"><span>Bella</span> I.T. Centre</span>
             </div>
             <ul class="nav-links" id="navLinks" role="menubar">
@@ -1745,7 +1781,7 @@
         </div>
     </section>
 
-    <!-- ===== TECH ===== -->
+    <!-- ===== TECH SLIDER (horizontal auto-slider) ===== -->
     <section id="tech" aria-label="Technologies we use">
         <div class="container">
             <div class="text-center reveal">
@@ -1753,20 +1789,27 @@
                 <h2 class="section-title">Technologies <span>We Use</span></h2>
                 <p class="section-sub mx-auto">Modern tools and frameworks powering our development ecosystem.</p>
             </div>
-            <div class="tech-grid reveal-scale">
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">⚛️</span>React</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🟢</span>Node.js</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🐍</span>Python</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">☕</span>Java</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🗄️</span>PostgreSQL</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🍃</span>MongoDB</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">☁️</span>AWS</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🐳</span>Docker</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">📦</span>Kubernetes</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🔥</span>Firebase</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">📱</span>Flutter</div>
-                <div class="tech-item"><span class="tech-icon" aria-hidden="true">🧠</span>TensorFlow</div>
+
+            <!-- Slider -->
+            <div class="tech-slider-container reveal-scale">
+                <div class="tech-track" id="techTrack">
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">⚛️</span>React</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🟢</span>Node.js</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🐍</span>Python</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">☕</span>Java</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🗄️</span>PostgreSQL</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🍃</span>MongoDB</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">☁️</span>AWS</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🐳</span>Docker</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">📦</span>Kubernetes</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🔥</span>Firebase</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">📱</span>Flutter</div>
+                    <div class="tech-item"><span class="tech-icon" aria-hidden="true">🧠</span>TensorFlow</div>
+                </div>
             </div>
+
+            <!-- Dots indicator -->
+            <div class="tech-slider-dots" id="techDots"></div>
         </div>
     </section>
 
@@ -2094,17 +2137,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
+                    <!-- ===== FOOTER LOGO (logo.png) ===== -->
                     <div class="nav-logo" style="font-size:1.6rem;margin-bottom:10px;">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:8px; flex-shrink:0;">
-                            <rect width="34" height="34" rx="8" fill="url(#footerLogoGrad)"/>
-                            <defs>
-                                <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%" stop-color="#2563EB"/>
-                                    <stop offset="100%" stop-color="#475569"/>
-                                </linearGradient>
-                            </defs>
-                            <text x="17" y="18" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="central">B</text>
-                        </svg>
+                        <img src="logo.png" alt="Bella I.T. Centre Logo" width="34" height="34" />
                         <span class="brand-main"><span>Bella</span> I.T. Centre</span>
                     </div>
                     <p style="color:#64748B;font-size:0.85rem;max-width:240px;" id="footerTagline">Bella I.T. Centre delivers cutting‑edge technology and human‑centered design solutions.</p>
@@ -2144,6 +2179,7 @@
             initCounters();
             initTimeline();
             initSlideshow();
+            initTechSlider();
             loadContentFromStorage();
             loadInquiriesFromStorage();
         });
@@ -2238,6 +2274,63 @@
                     item.classList.add('active');
                 });
             });
+        }
+
+        // ===== TECH SLIDER (1 second auto-slide) =====
+        function initTechSlider() {
+            const track = document.getElementById('techTrack');
+            const items = track.querySelectorAll('.tech-item');
+            const dotsContainer = document.getElementById('techDots');
+            let currentIndex = 0;
+            const totalItems = items.length;
+            let slideInterval = null;
+
+            // Create dots
+            for (let i = 0; i < totalItems; i++) {
+                const dot = document.createElement('span');
+                dot.dataset.index = i;
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('span');
+
+            function goToSlide(index) {
+                if (index < 0) index = totalItems - 1;
+                if (index >= totalItems) index = 0;
+                currentIndex = index;
+                const offset = -currentIndex * 100;
+                track.style.transform = 'translateX(' + offset + '%)';
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function startAutoSlide() {
+                stopAutoSlide();
+                slideInterval = setInterval(nextSlide, 1000);
+            }
+
+            function stopAutoSlide() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            }
+
+            // Pause on hover/touch
+            const sliderContainer = track.closest('.tech-slider-container');
+            sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+            sliderContainer.addEventListener('touchstart', stopAutoSlide);
+            sliderContainer.addEventListener('touchend', startAutoSlide);
+
+            // Start auto-sliding
+            startAutoSlide();
         }
 
         const navToggle = document.getElementById('navToggle');
@@ -2403,7 +2496,7 @@
             });
         });
 
-        console.log('🚀 Bella I.T. Centre — Simple Blue & Gray Theme loaded.');
+        console.log('🚀 Bella I.T. Centre — Simple Blue & Gray Theme with Tech Slider (1s) and logo.png.');
     </script>
 
 </body>
