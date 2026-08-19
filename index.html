@@ -46,7 +46,7 @@
             },
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+977-9801848492",
+                "telephone": "+977-9804918250",
                 "contactType": "sales",
                 "availableLanguage": ["English", "Nepali"]
             },
@@ -430,13 +430,13 @@
             z-index: 1000;
             padding: 12px 0;
             transition: var(--transition);
-            background: #E5E7EB; /* grey */
+            background: #E5E7EB;
             border-bottom: 2px solid var(--primary);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         nav.scrolled {
             padding: 8px 0;
-            background: #D1D5DB; /* slightly darker grey on scroll */
+            background: #D1D5DB;
             border-bottom-color: var(--primary);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
@@ -455,7 +455,7 @@
             font-size: 1.2rem;
             font-weight: 900;
             letter-spacing: -0.03em;
-            color: #000000; /* Black text for logo area */
+            color: #000000;
         }
         .nav-logo img {
             border-radius: 6px;
@@ -463,7 +463,7 @@
             object-fit: cover;
         }
         .nav-logo .brand-main span {
-            color: var(--primary); /* Blue logo */
+            color: var(--primary);
         }
         .nav-links {
             display: flex;
@@ -474,7 +474,7 @@
         .nav-links a {
             font-size: 0.8rem;
             font-weight: 500;
-            color: #000000; /* Black text */
+            color: #000000;
             transition: 0.3s;
             position: relative;
             padding: 3px 0;
@@ -563,7 +563,7 @@
         }
 
         /* ============================================================
-           HERO (unchanged, but blue outline will be applied)
+           HERO
            ============================================================ */
         #hero {
             min-height: 100vh;
@@ -1208,6 +1208,41 @@
         }
 
         /* ============================================================
+           BOARD MEMBERS — with phone, WhatsApp, Facebook, Website
+           ============================================================ */
+        .member-contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 12px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(37, 99, 235, 0.15);
+            font-size: 0.7rem;
+        }
+        .member-contact-links a {
+            color: #1E293B;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(37, 99, 235, 0.06);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            font-weight: 500;
+        }
+        .member-contact-links a:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.12);
+        }
+        .member-contact-links .emoji {
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
            TEAM (blue outline)
            ============================================================ */
         .team-card {
@@ -1284,9 +1319,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 1px solid #F1F5F9;
+            margin-top: 10px;
         }
         .member-social-actions .social-action-btn {
             width: 36px;
@@ -1296,29 +1329,22 @@
             align-items: center;
             justify-content: center;
             background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            color: #64748B;
+            border: 2px solid var(--primary);
+            color: var(--primary);
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             text-decoration: none;
             position: relative;
         }
-        .member-social-actions .social-action-btn.fb-btn:hover {
-            background: #1877F2;
-            border-color: #1877F2;
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
-        .member-social-actions .social-action-btn.wa-btn:hover {
-            background: #25D366;
-            border-color: #25D366;
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
-        .member-social-actions .social-action-btn.phone-btn:hover {
+        .member-social-actions .social-action-btn:hover {
             background: var(--primary);
             border-color: var(--primary);
             color: #ffffff;
             transform: translateY(-3px);
+        }
+        .member-social-actions .social-action-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         /* ============================================================
@@ -1512,7 +1538,7 @@
            FOOTER — GREY BACKGROUND, BLACK TEXT, BLUE BORDER
            ============================================================ */
         footer {
-            background: #E5E7EB; /* grey */
+            background: #E5E7EB;
             border-top: 2px solid var(--primary);
             padding: 40px 0 20px;
         }
@@ -1701,6 +1727,7 @@
                 <li role="none"><a href="#services" role="menuitem">Services</a></li>
                 <li role="none"><a href="#process" role="menuitem">How We Work</a></li>
                 <li role="none"><a href="#portfolio" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="#board" role="menuitem">Board Members</a></li>
                 <li role="none"><a href="#team" role="menuitem">Our Team</a></li>
                 <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
@@ -2023,6 +2050,116 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    BOARD MEMBERS — UPDATED with Phone, WhatsApp, Facebook, Website
+    ============================================================ -->
+    <section id="board" aria-label="Board Members">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-badge">Leadership &amp; Vision</div>
+                <h2 class="section-title">Board <span>Members</span></h2>
+                <p class="section-sub mx-auto">Visionary leaders and board members guiding Bella I.T. Centre's strategic excellence.</p>
+            </div>
+            <div class="grid-4 stagger-children" style="margin-top:32px;">
+                <!-- Jyoti Prakash Prasai -->
+                <div class="team-card card-glass">
+                    <div class="photo">JP</div>
+                    <h4>Jyoti Prakash Prasai</h4>
+                    <div class="role">Chairperson &amp; Founder</div>
+                    <div class="member-contact-links">
+                        <a href="tel:+9779804918250"><span class="emoji">📞</span> +977-9804918250</a>
+                        <a href="https://wa.me/9779804918250" target="_blank"><span class="emoji">💬</span> WhatsApp</a>
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank"><span class="emoji">📘</span> Facebook</a>
+                        <a href="https://bellaitcentre.com" target="_blank"><span class="emoji">🌐</span> Website</a>
+                    </div>
+                    <div class="member-social-actions">
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank" rel="noopener noreferrer" class="social-action-btn fb-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://wa.me/9779804918250" target="_blank" rel="noopener noreferrer" class="social-action-btn wa-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                        <a href="tel:+9779804918250" class="social-action-btn phone-btn" aria-label="Phone">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sujan Subedi -->
+                <div class="team-card card-glass">
+                    <div class="photo">SS</div>
+                    <h4>Sujan Subedi</h4>
+                    <div class="role">CEO &amp; Co-founder</div>
+                    <div class="member-contact-links">
+                        <a href="tel:+9779804918250"><span class="emoji">📞</span> +977-9804918250</a>
+                        <a href="https://wa.me/9779804918250" target="_blank"><span class="emoji">💬</span> WhatsApp</a>
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank"><span class="emoji">📘</span> Facebook</a>
+                        <a href="https://bellaitcentre.com" target="_blank"><span class="emoji">🌐</span> Website</a>
+                    </div>
+                    <div class="member-social-actions">
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank" rel="noopener noreferrer" class="social-action-btn fb-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://wa.me/9779804918250" target="_blank" rel="noopener noreferrer" class="social-action-btn wa-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                        <a href="tel:+9779804918250" class="social-action-btn phone-btn" aria-label="Phone">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Raj Budathoki -->
+                <div class="team-card card-glass">
+                    <div class="photo">RB</div>
+                    <h4>Raj Budathoki</h4>
+                    <div class="role">Manager &amp; Co-founder</div>
+                    <div class="member-contact-links">
+                        <a href="tel:+9779804918250"><span class="emoji">📞</span> +977-9804918250</a>
+                        <a href="https://wa.me/9779804918250" target="_blank"><span class="emoji">💬</span> WhatsApp</a>
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank"><span class="emoji">📘</span> Facebook</a>
+                        <a href="https://bellaitcentre.com" target="_blank"><span class="emoji">🌐</span> Website</a>
+                    </div>
+                    <div class="member-social-actions">
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank" rel="noopener noreferrer" class="social-action-btn fb-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://wa.me/9779804918250" target="_blank" rel="noopener noreferrer" class="social-action-btn wa-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                        <a href="tel:+9779804918250" class="social-action-btn phone-btn" aria-label="Phone">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sushil Ghatraj -->
+                <div class="team-card card-glass">
+                    <div class="photo">SG</div>
+                    <h4>Sushil Ghatraj</h4>
+                    <div class="role">PRO &amp; Board Member</div>
+                    <div class="member-contact-links">
+                        <a href="tel:+9779804918250"><span class="emoji">📞</span> +977-9804918250</a>
+                        <a href="https://wa.me/9779804918250" target="_blank"><span class="emoji">💬</span> WhatsApp</a>
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank"><span class="emoji">📘</span> Facebook</a>
+                        <a href="https://bellaitcentre.com" target="_blank"><span class="emoji">🌐</span> Website</a>
+                    </div>
+                    <div class="member-social-actions">
+                        <a href="https://www.facebook.com/bellaitcentre" target="_blank" rel="noopener noreferrer" class="social-action-btn fb-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://wa.me/9779804918250" target="_blank" rel="noopener noreferrer" class="social-action-btn wa-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                        <a href="tel:+9779804918250" class="social-action-btn phone-btn" aria-label="Phone">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== TEAM ===== -->
     <section id="team" aria-label="Our team" style="background:#FFFFFF;">
         <div class="container">
@@ -2150,7 +2287,7 @@
                 <div class="contact-info reveal-left">
                     <div class="info-item"><span class="icon" aria-hidden="true">📍</span><div><strong>Address</strong><br id="addressDisplay">Kathmandu, Nepal</div></div>
                     <div class="info-item"><span class="icon" aria-hidden="true">📧</span><div><strong>Email</strong><br id="emailDisplay">info@bellaitcentre.com</div></div>
-                    <div class="info-item"><span class="icon" aria-hidden="true">📞</span><div><strong>Phone</strong><br id="phoneDisplay">+977 9801848492</div></div>
+                    <div class="info-item"><span class="icon" aria-hidden="true">📞</span><div><strong>Phone</strong><br id="phoneDisplay">+977 9804918250</div></div>
                     <div class="info-item"><span class="icon" aria-hidden="true">🕐</span><div><strong>Working Hours</strong><br>Mon–Fri, 9 AM – 6 PM NPT</div></div>
                 </div>
                 <form class="contact-form reveal-right" id="contactForm" novalidate>
@@ -2536,7 +2673,7 @@
             });
         });
 
-        console.log('🚀 Bella I.T. Centre — Grey nav/footer, black text, blue logo, blue outlines on all content.');
+        console.log('🚀 Bella I.T. Centre — Board Members added with full contact details.');
     </script>
 
 </body>
